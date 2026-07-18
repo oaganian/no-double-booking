@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+      target: builder
+    command: npm run start:dev
+    volumes:
+      - ./src:/app/src
+    ports:
+      - '3000:3000'
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      PORT: 3000

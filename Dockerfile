@@ -16,7 +16,7 @@ ENV NODE_ENV=production
 ENV PORT=3000
 
 COPY --from=builder /app/package*.json ./
-RUN npm ci --only=production --no-audit --no-fund && npm cache clean --force && chown -R node:node /app
+RUN npm ci --only=production --no-audit --ignore-scripts --no-fund && npm cache clean --force && chown -R node:node /app
 
 COPY --from=builder --chown=node:node /app/dist ./dist
 
